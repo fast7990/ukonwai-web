@@ -1,26 +1,29 @@
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable'
+import WorkNav from '@/components/work-nav'
+export default async function Layout({
+  params,
+  children,
+}: Readonly<{
+  params: { id: string }
+  children: React.ReactNode
+}>) {
+  const { id = '0' } = await params
 
-export default async function Layout(
-  props: Readonly<{
-    params: { id: string }
-    children: React.ReactNode
-  }>
-) {
-  const params = await props.params
-
-  const { children } = props
-
-  const { id = '0' } = params
   return (
-    <ResizablePanelGroup direction="horizontal" className=" min-h-screen">
-      <ResizablePanel defaultSize={25}>
+    <ResizablePanelGroup direction="horizontal" className="h-screen">
+      <ResizablePanel defaultSize={20}>
         <div className="flex h-full items-center justify-center p-6">
           <span className="font-semibold">Sidebar {id}</span>
         </div>
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={75}>
-        <div className="flex h-full items-center justify-center p-6">{children}</div>
+      <ResizablePanel defaultSize={80}>
+        <div className="h-screen flex flex-col">
+          {/* nav bar */}
+          <WorkNav workId={id} />
+          {/* content */}
+          <div className="flex-1">{children}</div>
+        </div>
       </ResizablePanel>
     </ResizablePanelGroup>
   )
