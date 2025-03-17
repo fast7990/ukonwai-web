@@ -10,13 +10,13 @@ export async function create() {
       content: '',
     },
   })
-  redirect(`/work/${newDoc.id}`)
+  redirect(`/work/${newDoc.uid}`)
 }
 
 export async function getDocList() {
   return await db.doc.findMany({
     select: {
-      id: true,
+      uid: true,
       title: true,
     },
   })

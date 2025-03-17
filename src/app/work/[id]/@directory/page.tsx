@@ -9,13 +9,13 @@ export default async function Directory(props: { params: { id: string } }) {
   return (
     <div>
       {list.map((doc) => {
-        const { id, title } = doc
+        const { uid, title } = doc
         let isCurrent = false
-        if (id === parseInt(params.id, 10)) isCurrent = true
+        if ((uid === params.id, 10)) isCurrent = true
 
         return (
           <div
-            key={id}
+            key={uid}
             className={cn(
               'inline-flex items-center w-full p-2 py-1 cursor-pointer hover:text-secondary-foreground',
               isCurrent ? 'bg-card' : 'hover:bg-card'
