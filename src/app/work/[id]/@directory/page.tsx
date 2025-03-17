@@ -1,4 +1,6 @@
-import { FileText } from 'lucide-react'
+import { FileText, Plus } from 'lucide-react'
+import { create } from './action'
+import { Button } from '@/components/ui/button'
 
 export default async function Directory(props: { params: Promise<{ id: string }> }) {
   const { params } = await props
@@ -14,7 +16,12 @@ export default async function Directory(props: { params: Promise<{ id: string }>
           &nbsp;动物农场{i} {id}
         </div>
       ))}
-      <div className="m-2">（会支持层级嵌套）</div>
+      <form action={create}>
+        <Button className="w-full justify-start px-2 font-bold" variant={'ghost'}>
+          <Plus className="h-4 w-4" />
+          &nbsp;&nbsp;创建文档
+        </Button>
+      </form>
     </div>
   )
 }
