@@ -1,6 +1,6 @@
-import { FileText, Plus } from 'lucide-react'
+import { FileText } from 'lucide-react'
 import { create } from './action'
-import { Button } from '@/components/ui/button'
+import CreateSubmitButton from './create-submit-button'
 
 export default async function Directory(props: { params: Promise<{ id: string }> }) {
   const { params } = await props
@@ -17,10 +17,7 @@ export default async function Directory(props: { params: Promise<{ id: string }>
         </div>
       ))}
       <form action={create}>
-        <Button className="w-full justify-start px-2 font-bold" variant={'ghost'}>
-          <Plus className="h-4 w-4" />
-          &nbsp;&nbsp;创建文档
-        </Button>
+        <CreateSubmitButton />
       </form>
     </div>
   )
