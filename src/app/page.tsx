@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button'
-import { Code, Zap } from 'lucide-react'
+import { Code } from 'lucide-react'
 import HomeNav from '@/components/HomeNav'
 import Slogan from '@/components/Slogan'
+import StartButton from '@/app/start-button'
 
 export default function Home() {
   return (
@@ -12,10 +13,7 @@ export default function Home() {
       </h2>
       <Slogan />
       <section className="mt-10 flex justify-center space-x-4">
-        <Button className="text-base" size="lg">
-          <Zap className="h-4 w-4" />
-          &nbsp;开始使用
-        </Button>
+        <StartButton />
         <Button variant="secondary" className="text-base" size="lg">
           <Code className="h-4 w-4" />
           &nbsp;加入研发团队

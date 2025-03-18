@@ -12,11 +12,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [GitHub],
   basePath: '/auth',
   callbacks: {
-    authorized({ request, auth }) {
-      const { pathname } = request.nextUrl
-      if (pathname.startsWith(`/work`)) return !!auth
-      return true
-    },
     jwt({ token, trigger, session }) {
       if (trigger === 'update') token.name = session.user.name
       return token
