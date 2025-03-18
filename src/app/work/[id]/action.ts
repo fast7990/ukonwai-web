@@ -20,10 +20,8 @@ export async function updateDoc(uid: string, data: { title?: string; content?: s
       data,
     })
 
-    if (data.title) {
-      // 修改 title 时，重新生成页面
-      revalidatePath(`/work/${uid}`)
-    }
+    // 重新验证路径，清空缓存
+    revalidatePath(`/work/${uid}`)
   } catch (ex) {
     console.error(ex)
   }

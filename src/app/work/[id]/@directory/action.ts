@@ -24,3 +24,18 @@ export async function getDocList() {
     },
   })
 }
+
+export async function del(uid: string) {
+  // 删除
+  await db.doc.delete({
+    where: {
+      uid,
+    },
+  })
+
+  const list = await getDocList()
+  const uidList = list.map((doc) => doc.uid)
+  const otherUid = uidList.find((id) => id !== uid)
+
+  redirect(`/work/${otherUid}`) // 删除以后，定位到其他文档
+}
