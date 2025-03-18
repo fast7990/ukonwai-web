@@ -1,17 +1,7 @@
 import { ScrollArea } from '@/components/ui/scroll-area'
-import AIIsland from '@/components/ai-island'
-import { db } from '@/db/db'
-
-async function getDoc(uid: string) {
-  try {
-    const doc = await db.doc.findUnique({
-      where: { uid },
-    })
-    return doc
-  } catch {
-    return null
-  }
-}
+import { getDoc } from './action'
+import Title from './title'
+import Content from './content'
 
 export default async function OneWork({ params }: { params: { id: string } }) {
   const uid = params.id
@@ -28,12 +18,11 @@ export default async function OneWork({ params }: { params: { id: string } }) {
   return (
     <>
       <ScrollArea className="h-[calc(100vh-46px)]">
-        <div className="max-w-[900px] mx-auto my-7 h-[2000px]">
-          <h1 className="scroll-m-20 font-bold tracking-tight lg:text-5xl">{doc.title}</h1>
-          <p className="leading-7 [&:not(:first-child)]:mt-6">{doc.content || '<无内容>'}</p>
+        <div className="max-w-[900px] mx-auto my-10 h-[2000px]">
+          <Title uid={uid} title={doc.title} />
+          <Content uid={uid} content={doc.content} />
         </div>
       </ScrollArea>
-      <AIIsland />
     </>
   )
 }

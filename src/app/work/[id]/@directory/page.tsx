@@ -22,7 +22,7 @@ export default async function Directory(props: { params: { id: string } }) {
             )}
           >
             <FileText className="h-4 w-4" />
-            &nbsp;{title}
+            &nbsp;{title || '<无标题>'}
           </div>
         )
       })}

@@ -14,10 +14,13 @@ export async function create() {
 }
 
 export async function getDocList() {
-  return await db.doc.findMany({
+  return db.doc.findMany({
     select: {
       uid: true,
       title: true,
+    },
+    orderBy: {
+      uid: 'asc',
     },
   })
 }
