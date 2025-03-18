@@ -10,32 +10,32 @@ export async function create() {
       content: '',
     },
   })
-  redirect(`/work/${newDoc.uid}`)
+  redirect(`/work/${newDoc.id}`)
 }
 
 export async function getDocList() {
   return db.doc.findMany({
     select: {
-      uid: true,
+      id: true,
       title: true,
     },
     orderBy: {
-      uid: 'asc',
+      id: 'asc',
     },
   })
 }
 
-export async function del(uid: string) {
+export async function del(id: string) {
   // 删除
   await db.doc.delete({
     where: {
-      uid,
+      id,
     },
   })
 
   const list = await getDocList()
-  const uidList = list.map((doc) => doc.uid)
-  const otherUid = uidList.find((id) => id !== uid)
+  const idList = list.map((doc) => doc.id)
+  const otherId = idList.find((id) => id !== id)
 
-  redirect(`/work/${otherUid}`) // 删除以后，定位到其他文档
+  redirect(`/work/${otherId}`) // 删除以后，定位到其他文档
 }

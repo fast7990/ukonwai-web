@@ -5,17 +5,17 @@ import { updateDoc } from './action'
 import { debounce } from 'lodash-es'
 import { Textarea } from '@/components/ui/textarea'
 
-const saveContent = debounce((uid: string, content: string) => {
-  updateDoc(uid, { content }).then()
+const saveContent = debounce((id: string, content: string) => {
+  updateDoc(id, { content }).then()
 }, 1000)
 
-export default function Content(props: { uid: string; content: string }) {
+export default function Content(props: { id: string; content: string }) {
   const [content, setContent] = useState(props.content || '')
 
   function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
     const newContent = e.target.value
     setContent(newContent)
-    saveContent(props.uid, newContent)
+    saveContent(props.id, newContent)
   }
 
   return (

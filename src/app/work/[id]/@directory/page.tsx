@@ -3,16 +3,16 @@ import CreateSubmitButton from './create-submit-button'
 import Item from '@/app/work/[id]/@directory/item'
 
 export default async function Directory(props: { params: { id: string } }) {
-  const params = await props.params
+  const params = props.params
   const list = await getDocList()
   return (
     <div>
       {list.map((doc) => {
-        const { uid, title } = doc
+        const { id, title } = doc
         let isCurrent = false
-        if ((uid === params.id, 10)) isCurrent = true
+        if (id === params.id) isCurrent = true
 
-        return <Item key={uid} uid={uid} title={title} isCurrent={isCurrent} />
+        return <Item key={id} id={id} title={title} isCurrent={isCurrent} />
       })}
 
       <form action={create}>
