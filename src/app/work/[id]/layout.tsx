@@ -1,11 +1,14 @@
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable'
-import WorkNav from '@/components/work-nav'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Search, Star, Plus, User, Settings, DollarSign, LogOut, Trash2 } from 'lucide-react'
+import { DollarSign, LogOut, Search, Settings, Star, Trash2 } from 'lucide-react'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { getUserInfo } from '@/lib/session'
+import WorkNav from '@/components/work-nav'
+import React from 'react'
 
-export default async function Layout({
+export default function Layout({
   params,
   children,
   directory, // parallel route
@@ -14,11 +17,11 @@ export default async function Layout({
   children: React.ReactNode
   directory: React.ReactNode
 }>) {
-  const { id = '0' } = await params
+  const { id = '0' } = params
 
   return (
     <ResizablePanelGroup direction="horizontal" className="h-screen">
-      <ResizablePanel defaultSize={20}>
+      <ResizablePanel defaultSize={15}>
         <div className="flex flex-col h-screen bg-muted text-muted-foreground p-2">
           <div>
             <Button className="w-full justify-start px-2" variant="ghost">
@@ -29,21 +32,17 @@ export default async function Layout({
               <Star className="h-4 w-4" />
               &nbsp;&nbsp;收藏夹
             </Button>
-            <Button className="w-full justify-start px-2 font-bold hover:bg-card" variant="ghost">
-              <Plus className="h-4 w-4" />
-              &nbsp;&nbsp;创建文档
+            <Button className="w-full justify-start px-2" variant="ghost">
+              <Trash2 className="h-4 w-4" />
+              &nbsp;&nbsp;回收站
             </Button>
           </div>
           <Separator className="my-4" />
           <ScrollArea className="flex-auto">{directory}</ScrollArea>
           <Separator className="my-4" />
           <div>
-            <Button className="w-full justify-start px-2" variant="ghost">
-              <Trash2 className="h-4 w-4" />
-              &nbsp;&nbsp;回收站
-            </Button>
             <Button className="w-full justify-start px-2 " variant="ghost">
-              <User className="h-4 w-4" />
+              <UserAvatar />
               &nbsp;&nbsp;我的账户
             </Button>
             <Button className="w-full justify-start px-2 " variant="ghost">
@@ -62,7 +61,7 @@ export default async function Layout({
         </div>
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={80}>
+      <ResizablePanel defaultSize={85}>
         <div className="h-screen flex flex-col relative">
           {/* nav bar */}
           <WorkNav workId={id} />
@@ -71,5 +70,17 @@ export default async function Layout({
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>
+  )
+}
+
+async function UserAvatar() {
+  const user = await getUserInfo()
+  const { name, image } = user || {}
+
+  return (
+    <Avatar className="h-7 w-7">
+      <AvatarImage src={image || ''} alt={name || ''} />
+      <AvatarFallback>{name?.slice(0, 1)}</AvatarFallback>
+    </Avatar>
   )
 }
