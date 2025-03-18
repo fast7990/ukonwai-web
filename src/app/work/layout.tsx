@@ -1,5 +1,5 @@
-import { auth } from 'auth'
 import { redirect } from 'next/navigation'
+import { getUserInfo } from '@/lib/session'
 import React from 'react'
 
 export default async function Layout({
@@ -7,8 +7,8 @@ export default async function Layout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const session = await auth()
-  if (session?.user) {
+  const user = await getUserInfo()
+  if (user != null) {
     return <>{children}</>
   } else {
     redirect('/user-info')
