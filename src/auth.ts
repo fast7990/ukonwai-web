@@ -6,6 +6,7 @@ import { Adapter } from '@auth/core/adapters'
 import Email from 'next-auth/providers/nodemailer'
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  trustHost: true,
   theme: {
     logo: 'https://next-auth.js.org/img/logo/logo-sm.png',
   },

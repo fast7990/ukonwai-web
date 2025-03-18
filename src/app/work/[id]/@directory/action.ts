@@ -18,7 +18,7 @@ export async function create() {
   redirect(`/work/${newDoc.id}`)
 }
 
-export async function getDocList() {
+export async function getDocList(): Promise<{ id: string; title: string }[]> {
   const user = await getUserInfo()
   if (user == null) return []
 
