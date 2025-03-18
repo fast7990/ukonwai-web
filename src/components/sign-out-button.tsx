@@ -6,10 +6,12 @@ export default function SignOutButton({
   children,
   className,
   size,
+  variant,
 }: {
   children: React.ReactNode
   className?: string
   size?: 'sm' | 'lg'
+  variant?: 'secondary' | 'ghost' | 'link' | 'default' | 'destructive' | 'outline' | null
 }) {
   return (
     <form
@@ -19,7 +21,7 @@ export default function SignOutButton({
       }}
       className="w-full"
     >
-      <Button className={className} size={size}>
+      <Button className={className} size={size} variant={variant}>
         {children}
       </Button>
     </form>

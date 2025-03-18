@@ -5,8 +5,9 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { DollarSign, LogOut, Search, Settings, Star, Trash2 } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { getUserInfo } from '@/lib/session'
-import WorkNav from '@/components/work-nav'
+import SignOutButton from '@/components/sign-out-button'
 import React from 'react'
+import WorkNav from '@/components/work-nav'
 
 export default function Layout({
   params,
@@ -53,10 +54,10 @@ export default function Layout({
               <Settings className="h-4 w-4" />
               &nbsp;&nbsp;设置
             </Button>
-            <Button className="w-full justify-start px-2 " variant="ghost">
+            <SignOutButton className="w-full justify-start px-2 " variant="ghost">
               <LogOut className="h-4 w-4" />
               &nbsp;&nbsp;退出登录
-            </Button>
+            </SignOutButton>
           </div>
         </div>
       </ResizablePanel>
@@ -75,10 +76,12 @@ export default function Layout({
 
 async function UserAvatar() {
   const user = await getUserInfo()
-  const { name, image } = user || {}
+  let { name } = user || {}
+  const { image, email } = user || {}
+  if (!name) name = email
 
   return (
-    <Avatar className="h-7 w-7">
+    <Avatar className="h-7 w-7 border">
       <AvatarImage src={image || ''} alt={name || ''} />
       <AvatarFallback>{name?.slice(0, 1)}</AvatarFallback>
     </Avatar>

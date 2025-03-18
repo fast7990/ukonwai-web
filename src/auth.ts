@@ -3,13 +3,20 @@ import GitHub from 'next-auth/providers/github'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { db } from '@/db/db'
 import { Adapter } from '@auth/core/adapters'
+import Email from 'next-auth/providers/nodemailer'
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   theme: {
     logo: 'https://next-auth.js.org/img/logo/logo-sm.png',
   },
   adapter: PrismaAdapter(db) as Adapter,
-  providers: [GitHub],
+  providers: [
+    GitHub,
+    Email({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+    }),
+  ],
   basePath: '/auth',
   callbacks: {
     jwt({ token, trigger, session }) {
