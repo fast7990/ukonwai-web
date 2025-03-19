@@ -2,19 +2,10 @@
 
 import { BubbleMenu, Editor } from '@tiptap/react'
 import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
-import {
-  AlignCenter,
-  AlignLeft,
-  AlignRight,
-  Bold,
-  Code,
-  Italic,
-  Strikethrough,
-  Subscript,
-  Superscript,
-  Underline,
-} from 'lucide-react'
+import { Bold, Code, Italic, Underline } from 'lucide-react'
+import HighlightMenu from '@/components/editor/menus/text-menu/highlight-menu'
+import AlignMenu from '@/components/editor/menus/text-menu/align-menu'
+import MoreMenu from '@/components/editor/menus/text-menu/more-menu'
 
 interface IProps {
   editor: Editor | null
@@ -56,55 +47,14 @@ export default function TextMenu(props: IProps) {
         </Button>
         <Button
           size="sm"
-          onClick={() => editor.chain().focus().toggleStrike().run()}
-          variant={editor.isActive('strike') ? 'secondary' : 'ghost'}
-        >
-          <Strikethrough className="h-4 w-4" />
-        </Button>
-        <Button
-          size="sm"
           onClick={() => editor.chain().focus().toggleCode().run()}
           variant={editor.isActive('code') ? 'secondary' : 'ghost'}
         >
           <Code className="h-4 w-4" />
         </Button>
-        <Separator orientation="vertical" className="border" />
-        <Button
-          size="sm"
-          onClick={() => editor.chain().focus().setTextAlign('left').run()}
-          variant={editor.isActive({ textAlign: 'left' }) ? 'secondary' : 'ghost'}
-        >
-          <AlignLeft className="h-4 w-4" />
-        </Button>
-        <Button
-          size="sm"
-          onClick={() => editor.chain().focus().setTextAlign('center').run()}
-          variant={editor.isActive({ textAlign: 'center' }) ? 'secondary' : 'ghost'}
-        >
-          <AlignCenter className="h-4 w-4" />
-        </Button>
-        <Button
-          size="sm"
-          onClick={() => editor.chain().focus().setTextAlign('right').run()}
-          variant={editor.isActive({ textAlign: 'right' }) ? 'secondary' : 'ghost'}
-        >
-          <AlignRight className="h-4 w-4" />
-        </Button>
-        <Separator orientation="vertical" />
-        <Button
-          size="sm"
-          onClick={() => editor.chain().focus().toggleSuperscript().run()}
-          variant={editor.isActive('superscript') ? 'secondary' : 'ghost'}
-        >
-          <Superscript className="h-4 w-4" />
-        </Button>
-        <Button
-          size="sm"
-          onClick={() => editor.chain().focus().toggleSubscript().run()}
-          variant={editor.isActive('subscript') ? 'secondary' : 'ghost'}
-        >
-          <Subscript className="h-4 w-4" />
-        </Button>
+        <HighlightMenu editor={editor} />
+        <AlignMenu editor={editor} />
+        <MoreMenu editor={editor} />
       </div>
     </BubbleMenu>
   )

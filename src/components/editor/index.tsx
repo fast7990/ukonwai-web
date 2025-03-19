@@ -7,6 +7,7 @@ import Underline from '@tiptap/extension-underline'
 import TextAlign from '@tiptap/extension-text-align'
 import SubScript from '@tiptap/extension-subscript'
 import Superscript from '@tiptap/extension-superscript'
+import Highlight from '@tiptap/extension-highlight'
 import TextMenu from './menus/text-menu'
 
 interface IProps {
@@ -35,6 +36,7 @@ const TiptapEditor = (props: IProps) => {
       }),
       SubScript,
       Superscript,
+      Highlight.configure({ multicolor: true }),
       Placeholder.configure({
         placeholder: '请输入内容…',
       }),
