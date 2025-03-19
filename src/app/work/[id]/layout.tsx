@@ -8,15 +8,22 @@ import UserSettingButton from '@/components/user-setting-button'
 import SignOutButton from '@/components/sign-out-button'
 import React from 'react'
 
-export default function Layout({
-  params,
-  children,
-  directory, // parallel route
-}: Readonly<{
-  params: { id: string }
-  children: React.ReactNode
-  directory: React.ReactNode
-}>) {
+export default async function Layout(
+  props: Readonly<{
+    params: { id: string }
+    children: React.ReactNode
+    directory: React.ReactNode
+  }>
+) {
+  const params = await props.params
+
+  const {
+    children,
+
+    // parallel route
+    directory,
+  } = props
+
   const { id = '0' } = params
 
   return (

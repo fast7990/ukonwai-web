@@ -2,8 +2,8 @@ import { create, getDocList } from './action'
 import CreateSubmitButton from './create-submit-button'
 import Item from '@/app/work/[id]/@directory/item'
 
-export default async function Directory(props: { params: { id: string } }) {
-  const params = props.params
+export default async function Directory(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params
   const list = await getDocList()
   return (
     <div>
