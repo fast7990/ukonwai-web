@@ -35,7 +35,7 @@ const TiptapEditor = (props: IProps) => {
     },
     editorProps: {
       attributes: {
-        class: 'min-h-96 prose dark:prose-invert lg:prose-lg focus:outline-none',
+        class: 'min-h-96 prose dark:prose-invert lg:prose-lg focus:outline-none max-w-none',
       },
     },
     immediatelyRender: false,
