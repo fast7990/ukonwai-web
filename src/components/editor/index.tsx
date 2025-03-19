@@ -9,6 +9,8 @@ import SubScript from '@tiptap/extension-subscript'
 import Superscript from '@tiptap/extension-superscript'
 import Highlight from '@tiptap/extension-highlight'
 import TextMenu from './menus/text-menu'
+import { TaskList } from '@tiptap/extension-task-list'
+import { TaskItem } from '@tiptap/extension-task-item'
 
 interface IProps {
   rawContent: string
@@ -37,6 +39,10 @@ const TiptapEditor = (props: IProps) => {
       SubScript,
       Superscript,
       Highlight.configure({ multicolor: true }),
+      TaskList,
+      TaskItem.configure({
+        nested: true,
+      }),
       Placeholder.configure({
         placeholder: '请输入内容…',
       }),
@@ -51,6 +57,7 @@ const TiptapEditor = (props: IProps) => {
         class: 'min-h-96 prose dark:prose-invert lg:prose-lg focus:outline-none max-w-none',
       },
     },
+    immediatelyRender: false,
   })
 
   return (
