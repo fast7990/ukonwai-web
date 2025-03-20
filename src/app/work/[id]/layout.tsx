@@ -2,28 +2,20 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/componen
 import WorkNav from '@/components/work-nav'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { ScrollArea } from '@/components/ui/scroll-area'
 import { LogOut, Search, Star, Trash2, Users } from 'lucide-react'
 import UserSettingButton from '@/components/user-setting-button'
 import SignOutButton from '@/components/sign-out-button'
 import React from 'react'
 
-export default async function Layout(
-  props: Readonly<{
-    params: { id: string }
-    children: React.ReactNode
-    directory: React.ReactNode
-  }>
-) {
-  const params = await props.params
-
-  const {
-    children,
-
-    // parallel route
-    directory,
-  } = props
-
+export default function Layout({
+  params,
+  children,
+  directory, // parallel route
+}: Readonly<{
+  params: { id: string }
+  children: React.ReactNode
+  directory: React.ReactNode
+}>) {
   const { id = '0' } = params
 
   return (
@@ -46,7 +38,7 @@ export default async function Layout(
             </Button>
           </div>
           <Separator className="my-4" />
-          <ScrollArea className="flex-auto">{directory}</ScrollArea>
+          <div className="flex-auto overflow-y-auto">{directory}</div>
           <Separator className="my-4" />
           <div>
             <Button className="w-full justify-start px-2" variant="ghost">
@@ -66,7 +58,9 @@ export default async function Layout(
           {/* nav bar */}
           <WorkNav workId={id} />
           {/* content */}
-          <div className="flex-1">{children}</div>
+          <div id="work-content-scroll-container" className="flex-auto overflow-y-auto">
+            {children}
+          </div>
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>

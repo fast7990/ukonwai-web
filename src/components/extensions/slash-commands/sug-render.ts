@@ -5,6 +5,8 @@ import { extensionName, popup } from '.'
 
 const render = () => {
   let component: any
+  let scrollElem: HTMLElement
+  let scrollYValue: string
 
   return {
     onStart: (props: SuggestionProps) => {
@@ -40,6 +42,14 @@ const render = () => {
         content: component.element,
       })
       popup?.[0].show()
+
+      // 获取编辑器滚动的元素，和 overflowY 的值
+      if (!scrollElem) {
+        scrollElem = document.getElementById('work-content-scroll-container') as HTMLElement
+        scrollYValue = scrollElem.style.overflowY
+      }
+      // 暂时禁止编辑器滚动
+      scrollElem.style.overflowY = 'hidden'
     },
 
     onUpdate(props: SuggestionProps) {
@@ -92,9 +102,12 @@ const render = () => {
       return component.ref?.onKeyDown(props)
     },
 
-    onExit(props: SuggestionProps) {
+    onExit() {
       popup?.[0].hide()
       component.destroy()
+
+      // 恢复编辑器滚动
+      scrollElem.style.overflowY = scrollYValue
     },
   }
 }
