@@ -11,6 +11,7 @@ import Highlight from '@tiptap/extension-highlight'
 import TextMenu from './menus/text-menu'
 import { TaskList } from '@tiptap/extension-task-list'
 import { TaskItem } from '@tiptap/extension-task-item'
+import { SlashCommands } from '@/components/extensions/slash-commands'
 
 interface IProps {
   rawContent: string
@@ -46,6 +47,7 @@ const TiptapEditor = (props: IProps) => {
       Placeholder.configure({
         placeholder: '请输入内容…',
       }),
+      SlashCommands,
     ],
     content: gen_content(rawContent),
     onUpdate: ({ editor }) => {
