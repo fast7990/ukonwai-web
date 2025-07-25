@@ -1,3 +1,11 @@
+<!--
+ * @Author: fast7990 immengxingchen@qq.com
+ * @Date: 2025-07-25 22:05:47
+ * @LastEditors: fast7990 immengxingchen@qq.com
+ * @LastEditTime: 2025-07-25 22:15:55
+ * @FilePath: \ukonwai-web\README.zh.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 这是一个使用 [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) 引导的 [Next.js](https://nextjs.org) 项目。
 
 ## 开始使用
@@ -67,3 +75,13 @@ npx prisma migrate reset
 - 复用数据库连接
 - 限制数据库连接数量
 - 提高数据库连接效率
+
+5. 生成 Prisma 客户端
+```
+pnpm prisma generate
+```
+生成 Prisma 客户端作用 ：
+
+- 基于 `schema.prisma` 生成 TypeScript 客户端代码
+- 提供类型安全的数据库操作方法
+- 自动处理数据库连接池
