@@ -23,7 +23,7 @@ export default function Item(props: IProps) {
   return (
     <div
       className={cn(
-        'flex justify-between w-full p-2 cursor-pointer hover:text-secondary-foreground group',
+        'text-sm flex justify-between w-full p-2 cursor-pointer hover:text-secondary-foreground group mb-0.5 px-1 pl-3 text-secondary-foreground font-bold bg-active rounded-sm',
         isCurrent ? 'bg-card' : 'hover:bg-card'
       )}
     >

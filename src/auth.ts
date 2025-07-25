@@ -37,8 +37,21 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     GitHub, // GitHub OAuth登录 - 使用用户的GitHub账号进行认证
     Email({
       // 电子邮件认证配置
-      server: "smtp://lsa@prisma.io:123456@smtp.ethereal.email:587", // SMTP服务器配置
-      from: "lsa@prisma.io", // 验证邮件的发件人地址
+      server: {
+        host: process.env.EMAIL_SERVER_HOST,
+        port: process.env.EMAIL_SERVER_PORT,
+        secure: true, // 587端口使用STARTTLS，不需要直接TLS
+        tls: {
+          ciphers: 'SSLv3',
+          rejectUnauthorized: process.env.NODE_ENV === 'production', // 开发环境允许自签名证书
+        },
+        maxAge: 24 * 60 * 60, // 验证码有效期（24小时）
+        auth: {
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD,
+        },
+      },
+      from: process.env.EMAIL_FROM, // 发件人邮箱
     }),
   ],
   // 认证路由基础路径
@@ -57,20 +70,3 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
 })
-
-async function main() {
-   db.user.findUnique({
-    where: { email: 'fast7990@outlook.com' },
-  }).then((res) => {
-    console.log(JSON.stringify(res))
-  })
-}
-main()
-  .then(async () => {
-    await db.$disconnect()
-  })
-  .catch(async (e) => {
-    console.error(e)
-    await db.$disconnect()
-    process.exit(1)
-  })

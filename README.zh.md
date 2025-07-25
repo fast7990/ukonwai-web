@@ -36,7 +36,7 @@ bun dev
 有关更多详细信息，请查看我们的 [Next.js 部署文档](https://nextjs.org/docs/app/building-your-application/deploying)。
 
 ## 数据库
-1.执行Prisma迁移命令 以根据schema.prisma创建数据库表结构：
+1. 执行Prisma迁移命令 以根据schema.prisma创建数据库表结构：
 ```
 npx prisma migrate dev --name init
 ```
@@ -45,13 +45,12 @@ npx prisma migrate dev --name init
 - 基于 `schema.prisma` 生成SQL迁移文件
 - 自动在数据库中执行SQL创建所有表（包括User表）
 - 创建 prisma/migrations 目录存储迁移历史
-- 2.
-验证迁移结果 ：
+2. 验证迁移结果 ：
 ```
 npx prisma studio
 ```
 
-2.重置数据库
+3. 重置数据库
 ```
 npx prisma migrate reset
 ```
@@ -61,7 +60,7 @@ npx prisma migrate reset
 - 重新执行所有迁移文件
 - 重置数据库连接池
 
-3. 数据库连接池
+4. 数据库连接池
 数据库连接池作用 ：
 
 - 管理数据库连接

@@ -10,7 +10,7 @@ export async function create() {
 
   const newDoc = await db.doc.create({
     data: {
-      title: '新建文档 ' + Date.now().toString().slice(-4),
+      title: '<无标题> ' + Date.now().toString().slice(-4),
       content: '',
       userId: user.id,
     },

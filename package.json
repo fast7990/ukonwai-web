@@ -24,7 +24,11 @@
     "@radix-ui/react-scroll-area": "^1.2.3",
     "@radix-ui/react-separator": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.2",
+    "@tiptap/extension-collaboration": "^3.0.7",
+    "@tiptap/extension-drag-handle": "^3.0.7",
+    "@tiptap/extension-drag-handle-react": "^3.0.7",
     "@tiptap/extension-highlight": "^2.11.5",
+    "@tiptap/extension-node-range": "^3.0.7",
     "@tiptap/extension-placeholder": "^2.11.5",
     "@tiptap/extension-subscript": "^2.11.5",
     "@tiptap/extension-superscript": "^2.11.5",
@@ -36,6 +40,7 @@
     "@tiptap/react": "^2.11.5",
     "@tiptap/starter-kit": "^2.11.5",
     "@tiptap/suggestion": "^2.11.5",
+    "@tiptap/y-tiptap": "^3.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "install": "^0.13.0",
@@ -56,6 +61,8 @@
     "tippy.js": "^6.3.7",
     "typed.js": "^2.1.0",
     "ua-parser-js": "^2.0.3",
+    "y-protocols": "^1.0.6",
+    "yjs": "^13.6.27",
     "zod": "^3.24.2"
   },
   "devDependencies": {

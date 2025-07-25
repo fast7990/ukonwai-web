@@ -12,7 +12,7 @@ import TextMenu from './menus/text-menu'
 import { TaskList } from '@tiptap/extension-task-list'
 import { TaskItem } from '@tiptap/extension-task-item'
 import { SlashCommands } from '@/components/extensions/slash-commands'
-
+import DragHandleComponent from './menus/drag-handle'
 interface IProps {
   rawContent: string
   handleUpdate: (content: string) => void
@@ -45,7 +45,9 @@ const TiptapEditor = (props: IProps) => {
         nested: true,
       }),
       Placeholder.configure({
-        placeholder: '请输入内容…',
+        placeholder: "写点什么，或按'/'键调用命令...",
+        emptyEditorClass: "is-editor-empty",
+        emptyNodeClass: "is-empty",
       }),
       SlashCommands,
     ],
@@ -66,6 +68,7 @@ const TiptapEditor = (props: IProps) => {
     <>
       <EditorContent editor={editor} />
       <TextMenu editor={editor} />
+      <DragHandleComponent editor={editor} />
     </>
   )
 }

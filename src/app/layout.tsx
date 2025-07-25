@@ -7,7 +7,7 @@ import { isMobileDevice } from '@/lib/isMobileDevice'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: '划水 AI',
+  title: '知识库 AI',
   description: 'AIGC 知识库，AI 写作，协同编辑',
 }
 
@@ -24,7 +24,7 @@ export default async function RootLayout({
         {isMobile && (
           <div className="h-screen flex flex-col items-center justify-center">
             <p>
-              <strong>划水 AI</strong> ，暂不支持移动端浏览器~
+              <strong>知识库 AI</strong> ，暂不支持移动端浏览器~
             </p>
           </div>
         )}

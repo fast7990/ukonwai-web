@@ -1,4 +1,3 @@
-import { ScrollArea } from '@/components/ui/scroll-area'
 import { getDoc } from './action'
 import Title from './title'
 import Content from './content'
@@ -18,12 +17,10 @@ export default async function OneWork(props: { params: Promise<{ id: string }> }
 
   return (
     <>
-      <ScrollArea className="h-[calc(100vh-46px)]">
-        <div className="max-w-[900px] mx-auto my-10">
-          <Title id={id} title={doc.title} />
-          <Content id={id} content={doc.content} />
-        </div>
-      </ScrollArea>
+      <div id="work-content-container" className="max-w-[900px] mx-auto my-10">
+        <Title id={id} title={doc.title} />
+        <Content id={id} content={doc.content} />
+      </div>
     </>
   )
 }

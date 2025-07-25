@@ -20,7 +20,7 @@ export default function Layout({
 
   return (
     <ResizablePanelGroup direction="horizontal" className="h-screen">
-      <ResizablePanel defaultSize={15}>
+      <ResizablePanel defaultSize={15} minSize={15} maxSize={50}>
         <div className="flex flex-col h-screen bg-muted text-muted-foreground p-2">
           <div>
             <UserSettingButton />
@@ -52,8 +52,8 @@ export default function Layout({
           </div>
         </div>
       </ResizablePanel>
-      <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={85}>
+      <ResizableHandle withHandle className="bg-muted" />
+      <ResizablePanel defaultSize={85} minSize={50} maxSize={100}>
         <div className="h-screen flex flex-col relative">
           {/* nav bar */}
           <WorkNav workId={id} />
@@ -61,6 +61,7 @@ export default function Layout({
           <div id="work-content-scroll-container" className="flex-auto overflow-y-auto">
             {children}
           </div>
+          <div>sdasas</div>
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>

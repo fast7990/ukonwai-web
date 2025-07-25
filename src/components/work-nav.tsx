@@ -18,7 +18,7 @@ export default function WorkNav(props: IProps) {
         <div className="pl-4">
           <span className="text-sm leading-8 text-muted-foreground">
             {/* shadcn-ui 有 breadcrumb 组件，到时看是否用上 */}
-            <Link href={workId}>文档1</Link> / 文档2 / 文档3
+            <Link href={workId}>文档1</Link>
           </span>
         </div>
       </div>

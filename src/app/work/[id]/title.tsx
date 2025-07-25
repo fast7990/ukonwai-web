@@ -19,12 +19,12 @@ export default function Title(props: { id: string; title: string }) {
   }
 
   return (
-    <div className="mb-6 pb-4 border-b">
+    <div className="mx-10 mb-6 flex">
       <Input
         placeholder="请输入内容..."
         value={title}
         onChange={handleChange}
-        className="border-none p-0 text-4xl font-bold focus-visible:ring-transparent"
+        className="border-none p-0 text-4xl font-bold focus-visible:ring-transparent "
       />
       {/* 可能还会再增加其他功能，例如设置 Icon 、背景等 */}
     </div>

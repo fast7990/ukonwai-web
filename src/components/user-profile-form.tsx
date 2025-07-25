@@ -19,6 +19,7 @@ interface IProps {
   email: string
   name: string
   avatar: string
+  onAvatarUpdate: () => void
 }
 
 export function UserProfileForm(props: IProps) {
@@ -44,6 +45,7 @@ export function UserProfileForm(props: IProps) {
     const data = await res.json()
     if (data.error === 0) {
       setSuccessStatus(true)
+      props.onAvatarUpdate()
     }
   }
 
