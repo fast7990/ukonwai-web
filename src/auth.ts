@@ -34,7 +34,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   // 认证提供商配置数组
   // 配置支持的登录方式，用户可选择其中一种进行认证
   providers: [
-    GitHub, // GitHub OAuth登录 - 使用用户的GitHub账号进行认证
+    GitHub({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+      authorization: { 
+        params: { 
+          redirect_uri: "https://localhost:3000/api/auth/callback/github" // 需与环境一致 
+        }
+      }
+    }), // GitHub OAuth登录 - 使用用户的GitHub账号进行认证
     Email({
       // 电子邮件认证配置
       server: {

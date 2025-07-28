@@ -57,10 +57,10 @@ export function UserProfileForm(props: IProps) {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className='space-y-2'>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input {...field} disabled />
+                  <Input className='text-sm font-bold' {...field} disabled />
                 </FormControl>
                 <FormMessage />
               </FormItem>
