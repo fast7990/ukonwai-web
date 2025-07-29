@@ -37,11 +37,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     GitHub({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
-      authorization: { 
-        params: { 
-          redirect_uri: "https://localhost:3000/api/auth/callback/github" // 需与环境一致 
-        }
-      }
+      // authorization: { 
+      //   params: { 
+      //     redirect_uri: "https://localhost:3000/api/auth/callback/github" // 需与环境一致 
+      //   }
+      // }
     }), // GitHub OAuth登录 - 使用用户的GitHub账号进行认证
     Email({
       // 电子邮件认证配置
@@ -65,7 +65,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   // 认证路由基础路径
   // 所有认证相关的API和页面都将挂载在该路径下
   // 例如: /auth/signin, /auth/signout, /auth/callback
-  basePath: '/auth',
+  basePath: '/api/auth',
   // 认证回调函数配置
   // 自定义认证流程中的关键环节处理逻辑
   callbacks: {

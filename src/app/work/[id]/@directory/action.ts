@@ -4,12 +4,13 @@ import { db } from '@/db/db'
 import { redirect } from 'next/navigation'
 import { getUserInfo } from '@/lib/session'
 
-export async function create() {
+export async function create(option: { parentId: string | null }) {
   const user = await getUserInfo()
   if (!user || !user.id) return
 
   const newDoc = await db.doc.create({
     data: {
+      parentId: option.parentId,
       title: '<无标题> ' + Date.now().toString().slice(-4),
       content: '',
       userId: user.id,
@@ -26,6 +27,7 @@ export async function getDocList(): Promise<{ id: string; title: string }[]> {
     select: {
       id: true,
       title: true,
+      parentId: true,
     },
     where: {
       userId: user.id || '',

@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import { FileText, Trash2 } from 'lucide-react'
+import { FileText, Trash2, Plus, MoreHorizontal } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { del } from '@/app/work/[id]/@directory/action'
-
+import CreateSubmitButton from './create-submit-button'
 interface IProps {
   id: string
   title: string
@@ -27,24 +27,34 @@ export default function Item(props: IProps) {
         isCurrent ? 'bg-card' : 'hover:bg-card'
       )}
     >
-      <Link href={`/work/${id}`} className="inline-flex items-center">
-        <FileText className="h-4 w-4" />
-        &nbsp;{title || '<无标题>'}
+      <Link href={`/work/${id}`} className="cursor-pointer flex-auto overflow-hidden py-1.5 px-0.5 flex items-center">
+        <FileText className="mr-1" />
+        <span className="truncate flex-auto">{title || '<无标题>'}</span>
       </Link>
       <div className="inline-flex items-center invisible group-hover:visible">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <DropdownMenuContent>
-              <DropdownMenuItem className="cursor-pointer" onClick={() => del(id)}>
-                <Trash2 className="h-4 w-4" />
-                &nbsp;删除
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>其他操作</DropdownMenuItem>
-              <DropdownMenuItem>其他操作</DropdownMenuItem>
-            </DropdownMenuContent>
+            <div className="flex">
+              <button className="p-1 hover:bg-muted rounded-md">
+                <MoreHorizontal className="h-4 w-4" />
+              </button>
+            </div>
           </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem>其他操作</DropdownMenuItem>
+            <DropdownMenuItem>其他操作</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="cursor-pointer text-destructive" onClick={() => del(id)}>
+              <Trash2 className="h-4 w-4 mr-2 text-destructive" />
+              删除
+            </DropdownMenuItem>
+          </DropdownMenuContent>
         </DropdownMenu>
+        <CreateSubmitButton
+          className="p-1 hover:bg-muted rounded-md"
+          text=""
+          parentId={id}
+        />
       </div>
     </div>
   )

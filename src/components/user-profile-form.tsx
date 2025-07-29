@@ -4,11 +4,10 @@ import { z } from 'zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import fetch from 'node-fetch'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-
+import { Avatar } from 'antd';
 const formSchema = z.object({
   email: z.string().email(),
   name: z.string().min(2, { message: 'name must be least 2 characters' }),
@@ -60,7 +59,7 @@ export function UserProfileForm(props: IProps) {
               <FormItem className='space-y-2'>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input className='text-sm font-bold' {...field} disabled />
+                  <Input className='text-sm' {...field} disabled />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -73,7 +72,7 @@ export function UserProfileForm(props: IProps) {
               <FormItem>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Input your name" {...field} />
+                  <Input className='text-sm' placeholder="Input your name" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -84,9 +83,12 @@ export function UserProfileForm(props: IProps) {
             name="avatar"
             render={({ field }) => (
               <FormItem>
+               
                 <FormLabel>Avatar</FormLabel>
                 <FormControl>
-                  <Input placeholder="https://github.com/username.png" {...field} />
+                  <div className='flex'>
+                     <Avatar src={field.value} /><Input className='text-sm ml-1 flex-1' placeholder="头像地址" {...field} />
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>

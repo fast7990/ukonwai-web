@@ -6,7 +6,7 @@ CREATE TABLE "Doc" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "userId" TEXT NOT NULL,
-
+    "parentId" TEXT DEFAULT '',
     CONSTRAINT "Doc_pkey" PRIMARY KEY ("id")
 );
 

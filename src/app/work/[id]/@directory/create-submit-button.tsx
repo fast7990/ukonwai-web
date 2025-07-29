@@ -3,13 +3,13 @@
 import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react'
 import { useFormStatus } from 'react-dom'
-
-export default function CreateSubmitButton() {
+import { create } from './action'
+export default function CreateSubmitButton(props: { className: string; text: string; parentId: string | null }) {
   const status = useFormStatus()
   return (
-    <Button className="w-full justify-start px-2 font-bold" variant={'ghost'} disabled={status.pending}>
+    <button className={props.className} disabled={status.pending} onClick={() => create({ parentId: props.parentId })}>
       <Plus className="h-4 w-4" />
-      &nbsp;&nbsp;创建文档
-    </Button>
+      {props.text}
+    </button>
   )
 }
