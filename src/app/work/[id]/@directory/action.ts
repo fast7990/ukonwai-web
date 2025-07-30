@@ -19,7 +19,11 @@ export async function create(option: { parentId: string | null }) {
   redirect(`/work/${newDoc.id}`)
 }
 
-export async function getDocList(): Promise<{ id: string; title: string }[]> {
+export async function getDocList(): Promise<{
+  parentId: null | string;
+  id: string;
+  title: string;
+}[]> {
   const user = await getUserInfo()
   if (user == null) return []
 

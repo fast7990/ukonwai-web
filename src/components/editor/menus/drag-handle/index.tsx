@@ -1,5 +1,7 @@
 import DragHandle from '@tiptap/extension-drag-handle-react'
 import { Editor } from '@tiptap/react'
+import { GripVertical } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 interface IProps {
   editor: Editor | null
 }
@@ -10,7 +12,9 @@ export default function DragHandleComponent(props: IProps) {
   }
   return (
     <DragHandle editor={editor}>
-      <div className="w-4 h-4 bg-foreground rounded-md" />
+      <Button>
+        <GripVertical size={16} />
+      </Button>
     </DragHandle>
   )
 }

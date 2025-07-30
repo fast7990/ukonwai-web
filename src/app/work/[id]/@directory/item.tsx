@@ -4,6 +4,9 @@ import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { FileText, Trash2, Plus, MoreHorizontal } from 'lucide-react'
 import {
+  FileWordOutlined,
+} from '@ant-design/icons';
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -28,7 +31,7 @@ export default function Item(props: IProps) {
       )}
     >
       <Link href={`/work/${id}`} className="cursor-pointer flex-auto overflow-hidden py-1.5 px-0.5 flex items-center">
-        <FileText className="mr-1" />
+        <FileWordOutlined />
         <span className="truncate flex-auto">{title || '<无标题>'}</span>
       </Link>
       <div className="inline-flex items-center invisible group-hover:visible">

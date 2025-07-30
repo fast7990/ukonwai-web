@@ -7,21 +7,21 @@ import UserSettingButton from '@/components/user-setting-button'
 import SignOutButton from '@/components/sign-out-button'
 import React from 'react'
 
-export default function Layout({
+export default async function Layout({
   params,
   children,
   directory, // parallel route
 }: Readonly<{
-  params: { id: string }
+  params: Promise<{ id: string }>
   children: React.ReactNode
   directory: React.ReactNode
 }>) {
-  const { id = '0' } = params
+  const { id = '0' } = await params
 
   return (
     <ResizablePanelGroup direction="horizontal" className="h-screen">
-      <ResizablePanel defaultSize={15} minSize={15} maxSize={50}>
-        <div className="flex flex-col h-screen bg-muted text-muted-foreground p-2 min-w-[200px]">
+      <ResizablePanel defaultSize={15} minSize={15} maxSize={50} className="min-w-[200px]">
+        <div className="flex flex-col h-screen bg-muted text-muted-foreground p-2">
           <div>
             <UserSettingButton />
             <Button className="w-full justify-start px-2" variant="ghost">
