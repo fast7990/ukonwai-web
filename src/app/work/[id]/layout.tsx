@@ -21,7 +21,7 @@ export default function Layout({
   return (
     <ResizablePanelGroup direction="horizontal" className="h-screen">
       <ResizablePanel defaultSize={15} minSize={15} maxSize={50}>
-        <div className="flex flex-col h-screen bg-muted text-muted-foreground p-2">
+        <div className="flex flex-col h-screen bg-muted text-muted-foreground p-2 min-w-[200px]">
           <div>
             <UserSettingButton />
             <Button className="w-full justify-start px-2" variant="ghost">
