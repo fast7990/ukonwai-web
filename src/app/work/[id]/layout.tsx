@@ -18,7 +18,6 @@ export default async function Layout({
   directory: React.ReactNode
 }>) {
   const { id = '0' } = await params
-
   return (
     <ResizablePanelGroup direction="horizontal" className="h-screen">
       <ResizablePanel defaultSize={15} minSize={15} maxSize={50} className="min-w-[200px]">

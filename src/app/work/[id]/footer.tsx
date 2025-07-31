@@ -1,13 +1,12 @@
-
-// import { useWorkStore } from '@/store/work'
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 const Footer: React.FC = () => {
-//   const { workId } = useWorkStore()
+  const [id, setId] = useState('1')
   return (
     <footer className="bg-slate-100 p-1 text-left text-sm">
       <p>
         <span>创建时间：{new Date().toLocaleString()}</span>
-        {/* <span>文档ID：{workId}</span> */}
+        <span>文档ID：{id}</span>
       </p>
     </footer>
   )

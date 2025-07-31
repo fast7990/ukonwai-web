@@ -1,5 +1,4 @@
 'use client'
-
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
@@ -12,7 +11,9 @@ import TextMenu from './menus/text-menu'
 import { TaskList } from '@tiptap/extension-task-list'
 import { TaskItem } from '@tiptap/extension-task-item'
 import { SlashCommands } from '@/components/extensions/slash-commands'
+import { useEffect } from 'react';
 import DragHandle from './menus/drag-handle'
+import { useWorkStore } from '@/store/work'
 interface IProps {
   rawContent: string
   workId: string
@@ -30,6 +31,11 @@ function gen_content(rawContent: string) {
 
 const TiptapEditor = (props: IProps) => {
   const { rawContent, handleUpdate, workId } = props
+
+  const { setEditor, setWorkId } = useWorkStore()
+  useEffect(() => {
+    setWorkId({ workId });
+  }, [workId, setWorkId])
   const editor = useEditor({
     extensions: [
       StarterKit,
