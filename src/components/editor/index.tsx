@@ -12,9 +12,10 @@ import TextMenu from './menus/text-menu'
 import { TaskList } from '@tiptap/extension-task-list'
 import { TaskItem } from '@tiptap/extension-task-item'
 import { SlashCommands } from '@/components/extensions/slash-commands'
-import DragHandleComponent from './menus/drag-handle'
+import DragHandle from './menus/drag-handle'
 interface IProps {
   rawContent: string
+  workId: string
   handleUpdate: (content: string) => void
 }
 
@@ -28,8 +29,7 @@ function gen_content(rawContent: string) {
 }
 
 const TiptapEditor = (props: IProps) => {
-  const { rawContent, handleUpdate } = props
-
+  const { rawContent, handleUpdate, workId } = props
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -63,12 +63,11 @@ const TiptapEditor = (props: IProps) => {
     },
     immediatelyRender: false,
   })
-
   return (
     <>
       <EditorContent editor={editor} />
       <TextMenu editor={editor} />
-      <DragHandleComponent editor={editor} />
+      <DragHandle editor={editor} />
     </>
   )
 }

@@ -20,7 +20,7 @@ export default function UserSettingButton() {
     const updatedUser = await fetch('/api/user', {
       method: 'GET',
     }).then(res => res.json())
-    console.log(updatedUser)
+    // console.log(updatedUser)
     setUser(updatedUser.data || null);
   };
   useEffect(() => {

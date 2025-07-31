@@ -1,6 +1,7 @@
 'use client'
 
-import { BubbleMenu, Editor } from '@tiptap/react'
+import { BubbleMenu } from '@tiptap/react/menus'
+import { Editor } from '@tiptap/react'
 import HighlightMenu from '@/components/editor/menus/text-menu/highlight-menu'
 import AlignMenu from '@/components/editor/menus/text-menu/align-menu'
 import MoreMenu from '@/components/editor/menus/text-menu/more-menu'
@@ -27,7 +28,6 @@ export default function TextMenu(props: IProps) {
   return (
     <BubbleMenu
       editor={editor}
-      tippyOptions={{ duration: 100 }}
       updateDelay={100}
       shouldShow={() => shouldShow(editor)}
     >

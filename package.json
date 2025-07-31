@@ -30,19 +30,19 @@
     "@tiptap/extension-collaboration": "^3.0.7",
     "@tiptap/extension-drag-handle": "^3.0.7",
     "@tiptap/extension-drag-handle-react": "^3.0.7",
-    "@tiptap/extension-highlight": "^2.11.5",
+    "@tiptap/extension-highlight": "^2.26.1",
     "@tiptap/extension-node-range": "^3.0.7",
-    "@tiptap/extension-placeholder": "^2.11.5",
-    "@tiptap/extension-subscript": "^2.11.5",
-    "@tiptap/extension-superscript": "^2.11.5",
-    "@tiptap/extension-task-item": "^2.11.5",
-    "@tiptap/extension-task-list": "^2.11.5",
-    "@tiptap/extension-text-align": "^2.11.5",
-    "@tiptap/extension-underline": "^2.11.5",
-    "@tiptap/pm": "^2.11.5",
-    "@tiptap/react": "^2.11.5",
-    "@tiptap/starter-kit": "^2.11.5",
-    "@tiptap/suggestion": "^2.11.5",
+    "@tiptap/extension-placeholder": "^2.26.1",
+    "@tiptap/extension-subscript": "^2.26.1",
+    "@tiptap/extension-superscript": "^2.26.1",
+    "@tiptap/extension-task-item": "^2.26.1",
+    "@tiptap/extension-task-list": "^2.26.1",
+    "@tiptap/extension-text-align": "^2.26.1",
+    "@tiptap/extension-underline": "^2.26.1",
+    "@tiptap/pm": "^2.26.1",
+    "@tiptap/react": "^3.0.7",
+    "@tiptap/starter-kit": "^2.26.1",
+    "@tiptap/suggestion": "^2.26.1",
     "@tiptap/y-tiptap": "^3.0.0",
     "antd": "^5.26.6",
     "class-variance-authority": "^0.7.1",
@@ -67,7 +67,8 @@
     "ua-parser-js": "^2.0.3",
     "y-protocols": "^1.0.6",
     "yjs": "^13.6.27",
-    "zod": "^3.24.2"
+    "zod": "^3.24.2",
+    "zustand": "^5.0.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
@@ -93,6 +94,16 @@
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
+    ]
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "@prisma/client",
+      "@prisma/engines",
+      "@tailwindcss/oxide",
+      "prisma",
+      "sharp",
+      "unrs-resolver"
     ]
   }
 }

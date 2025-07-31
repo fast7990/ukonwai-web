@@ -14,7 +14,7 @@ export default function BasicMenu(props: IProps) {
     <>
       <Button
         size="sm"
-        onClick={() => editor.chain().focus().toggleBold().run()}
+        onClick={() => editor.chain().focus().toggleMark('bold').run()}
         variant={editor.isActive('bold') ? 'secondary' : 'ghost'}
       >
         <Bold className="h-4 w-4" />
@@ -28,14 +28,14 @@ export default function BasicMenu(props: IProps) {
       </Button>
       <Button
         size="sm"
-        onClick={() => editor.chain().focus().toggleItalic().run()}
+        onClick={() => editor.chain().focus().toggleMark('italic').run()}
         variant={editor.isActive('italic') ? 'secondary' : 'ghost'}
       >
         <Italic className="h-4 w-4" />
       </Button>
       <Button
         size="sm"
-        onClick={() => editor.chain().focus().toggleCode().run()}
+        onClick={() => editor.chain().focus().toggleMark('code').run()}
         variant={editor.isActive('code') ? 'secondary' : 'ghost'}
       >
         <Code className="h-4 w-4" />

@@ -58,8 +58,6 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
       parentKey: 'parentId',
       rootParentId: null,
     })
-
-    console.log(treeData)
     const renderItems = (items: DocItem[]): React.ReactNode => {
       return items.map((item) => {
         const isCurrent = item.id === id

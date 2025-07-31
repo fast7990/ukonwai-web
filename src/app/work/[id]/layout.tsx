@@ -1,11 +1,12 @@
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable'
+import React from 'react'
 import WorkNav from '@/components/work-nav'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { LogOut, Search, Star, Trash2, Users } from 'lucide-react'
 import UserSettingButton from '@/components/user-setting-button'
 import SignOutButton from '@/components/sign-out-button'
-import React from 'react'
+import Footer from '@/app/work/[id]/footer'
 
 export default async function Layout({
   params,
@@ -61,7 +62,7 @@ export default async function Layout({
           <div id="work-content-scroll-container" className="flex-auto overflow-y-auto">
             {children}
           </div>
-          <div>sdasas</div>
+          <Footer />
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>

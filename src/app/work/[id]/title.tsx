@@ -25,6 +25,11 @@ export default function Title(props: { id: string; title: string }) {
         value={title}
         onChange={handleChange}
         className="border-none p-0 text-4xl font-bold focus-visible:ring-transparent "
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault()
+          }
+        }}
       />
       {/* 可能还会再增加其他功能，例如设置 Icon 、背景等 */}
     </div>

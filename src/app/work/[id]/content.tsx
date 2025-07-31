@@ -15,5 +15,5 @@ export default function Content(props: { id: string; content: string }) {
     saveContent(id, content)
   }
 
-  return <TiptapEditor rawContent={content} handleUpdate={handleUpdate} />
+  return <TiptapEditor workId={id} rawContent={content} handleUpdate={handleUpdate} />
 }
