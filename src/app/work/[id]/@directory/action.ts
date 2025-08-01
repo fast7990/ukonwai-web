@@ -57,7 +57,7 @@ export async function del(id: string) {
 
   const list = await getDocList()
   const idList = list.map((doc) => doc.id)
-  const otherId = idList.find((id) => id !== id)
+  const otherId = idList.find((id) => id !== id) || idList[0] || ''
 
-  redirect(`/work/${otherId}`) // 删除以后，定位到其他文档
+  redirect(otherId ? `/work/${otherId}` : '/work') // 删除以后，定位到其他文档
 }

@@ -9,6 +9,8 @@ import SignOutButton from '@/components/sign-out-button'
 import Footer from '@/app/work/[id]/footer'
 import { fetchDoc } from './lib/doc' // 导入共享函数
 import { getUserInfo } from '@/lib/session'
+import SearchFileButton from '@/components/search/search-file-button'
+
 // 声明布局接收的参数类型，包含 metadata
 type LayoutProps = {
   params: Promise<{ id: string }>
@@ -29,15 +31,16 @@ export default async function Layout({
         <div className="flex flex-col h-screen bg-muted text-muted-foreground p-2">
           <div>
             <UserSettingButton user={user} />
-            <Button className="w-full justify-start px-2" variant="ghost">
+            <SearchFileButton />
+            {/* <Button className="w-full justify-start px-2 cursor-pointer" variant="ghost">
               <Search className="h-4 w-4" />
               &nbsp;&nbsp;搜索
-            </Button>
-            <Button className="w-full justify-start px-2" variant="ghost">
+            </Button> */}
+            <Button className="w-full justify-start px-2 cursor-pointer" variant="ghost">
               <Star className="h-4 w-4" />
               &nbsp;&nbsp;收藏夹
             </Button>
-            <Button className="w-full justify-start px-2" variant="ghost">
+            <Button className="w-full justify-start px-2 cursor-pointer" variant="ghost">
               <Users className="h-4 w-4" />
               &nbsp;&nbsp;协同文档
             </Button>

@@ -8,7 +8,7 @@ export default function CreateSubmitButton(props: { className: string; text: str
   const status = useFormStatus()
   return (
     <button className={props.className} disabled={status.pending} onClick={() => create({ parentId: props.parentId })}>
-      <Plus className="h-4 w-4" />
+      <Plus className="h-4 w-4 mr-2" />
       {props.text}
     </button>
   )

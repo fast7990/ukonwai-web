@@ -68,7 +68,6 @@ const TiptapEditor = (props: IProps) => {
     },
     onDestroy: () => {
       console.log('onDestroy')
-      // setEditor(null)
     },
     editorProps: {
       attributes: {
