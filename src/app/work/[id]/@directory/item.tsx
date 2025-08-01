@@ -22,7 +22,7 @@ export default function Item(props: IProps) {
   const { id, title, isCurrent } = props
   return (
     <div
-      className="text-sm flex justify-between w-full p-1 cursor-pointer px-1 pl-1 font-bold bg-active"
+      className="text-sm flex justify-between w-full p-1 cursor-pointer px-1 pl-1 font-bold bg-active group"
     >
       <Link href={`/work/${id}`} className="cursor-pointer flex-auto overflow-hidden py-1.5 px-0.5 flex items-center">
         <span className="truncate flex-auto">{title || '<无标题>'}</span>

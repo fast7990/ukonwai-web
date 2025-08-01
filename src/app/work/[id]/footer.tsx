@@ -9,8 +9,8 @@ const Footer: React.FC<FooterProps> = ({ doc }) => {
   const [createdTime, setCreatedTime] = useState<string>()
   // console.log(doc)
   useEffect(() => {
-    setCreatedTime(new Date(doc.createdAt).toLocaleString())
-  }, [doc.createdAt])
+    doc.createdAt ? setCreatedTime(new Date(doc?.createdAt as string).toLocaleString()) : setCreatedTime('')
+  }, [doc])
   return (
     <footer className="border-t flex items-center justify-between px-3 py-1 text-sm text-muted-foreground">
       <p>
