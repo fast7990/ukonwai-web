@@ -33,3 +33,38 @@ export async function updateDoc(id: string, data: { title?: string; content?: st
     console.error(ex)
   }
 }
+
+export async function deleteDoc(id: string) {
+  const user = await getUserInfo()
+  if (!user || !user.id) return null
+
+  try {
+    await db.doc.delete({
+      where: { id, userId: user.id },
+    })
+
+    // 重新验证路径，清空缓存
+    revalidatePath(`/work/${id}`)
+  } catch (ex) {
+    console.error(ex)
+  }
+}
+
+export async function createDoc(data: { title: string; content: string }) {
+  const user = await getUserInfo()
+  if (!user || !user.id) return null
+
+  try {
+    await db.doc.create({
+      data: {
+        ...data,
+        userId: user.id,
+      },
+    })
+
+    // 重新验证路径，清空缓存
+    revalidatePath(`/work`)
+  } catch (ex) {
+    console.error(ex)
+  }
+}

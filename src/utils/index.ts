@@ -9,3 +9,8 @@ export function getParams(request: NextRequest) {
   })
   return params
 }
+ // 计算字数的函数
+  export const calculateWordCount = (text: string) => {
+    // 去除所有空白字符，然后计算长度
+    return text.replace(/\s+/g, '').length;
+  };

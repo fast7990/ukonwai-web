@@ -1,34 +1,26 @@
-import { useState, useCallback } from 'react'
+// src/store/work.ts
+import { create } from 'zustand' // 注意：原代码使用 useState 实现，建议改为 zustand 标准用法
+import { Editor } from '@tiptap/react' // 引入 Editor 类型
+
 interface WorkStore {
-  workTitle: string;
-  setWorkTitle: (title: string) => void;
-  workId: string;
-  setWorkId: (workId: string) => void;
-  editor: any;
-  setEditor: (editor: any) => void;
+  workTitle: string
+  setWorkTitle: (title: string) => void
+  workId: string
+  setWorkId: (workId: string) => void
+  editor: Editor | null // 明确类型为 Editor 或 null
+  setEditor: (editor: Editor | null) => void
+  doc: any | null
+  setDoc: (doc: any | null) => void
 }
-export const useWorkStore = () => {
-  const [workTitle, setWorkTitle] = useState('');
-  const [workId, setWorkId] = useState('');
-  const [editor, setEditor] = useState<any>(null);
-  const updateState = useCallback((newState: Partial<WorkStore>) => {
-    // 判断是否含有workId
-    if (newState.workId) {
-      setWorkId(newState.workId)
-    }
-    if (newState.workTitle) {
-      setWorkTitle(newState.workTitle)
-    }
-    if (newState.editor) {
-      setEditor(newState.editor)
-    }
-  }, [setWorkId, setWorkTitle, setEditor])
-  return {
-    workTitle,
-    setWorkTitle: updateState,
-    workId,
-    setWorkId: updateState,
-    editor,
-    setEditor: updateState,
-  };
-};
+
+// 使用 zustand 创建全局存储（替代原 useState 实现，确保跨组件共享）
+export const useWorkStore = create<WorkStore>((set) => ({
+  workTitle: '',
+  setWorkTitle: (title) => set({ workTitle: title }),
+  workId: '',
+  setWorkId: (workId) => set({ workId }),
+  editor: null,
+  setEditor: (editor) => set({ editor }),
+  doc: null,
+  setDoc: (doc) => set({ doc }),
+}))

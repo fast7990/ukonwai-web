@@ -34,7 +34,7 @@ const TiptapEditor = (props: IProps) => {
 
   const { setEditor, setWorkId } = useWorkStore()
   useEffect(() => {
-    setWorkId({ workId });
+    setWorkId(workId);
   }, [workId, setWorkId])
   const editor = useEditor({
     extensions: [
@@ -61,6 +61,14 @@ const TiptapEditor = (props: IProps) => {
     onUpdate: ({ editor }) => {
       const data = editor.getJSON()
       handleUpdate(JSON.stringify(data))
+    },
+    onCreate: ({ editor }: { editor: ReturnType<typeof useEditor> }) => {
+      console.log('onCreate')
+      setEditor(editor)
+    },
+    onDestroy: () => {
+      console.log('onDestroy')
+      // setEditor(null)
     },
     editorProps: {
       attributes: {

@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Avatar } from 'antd';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 const formSchema = z.object({
   email: z.string().email(),
   name: z.string().min(2, { message: 'name must be least 2 characters' }),
@@ -18,7 +18,7 @@ interface IProps {
   email: string
   name: string
   avatar: string
-  onAvatarUpdate: () => void
+  onClose?: () => void
 }
 
 export function UserProfileForm(props: IProps) {
@@ -44,7 +44,8 @@ export function UserProfileForm(props: IProps) {
     const data = await res.json()
     if (data.error === 0) {
       setSuccessStatus(true)
-      props.onAvatarUpdate()
+      // 提交成功后关闭父级弹框
+      props.onClose?.()
     }
   }
 
@@ -56,10 +57,10 @@ export function UserProfileForm(props: IProps) {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem className='space-y-2'>
+              <FormItem className="space-y-2">
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input className='text-sm' {...field} disabled />
+                  <Input className="text-sm" {...field} disabled />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -72,7 +73,7 @@ export function UserProfileForm(props: IProps) {
               <FormItem>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input className='text-sm' placeholder="Input your name" {...field} />
+                  <Input className="text-sm" placeholder="Input your name" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -83,11 +84,14 @@ export function UserProfileForm(props: IProps) {
             name="avatar"
             render={({ field }) => (
               <FormItem>
-               
                 <FormLabel>Avatar</FormLabel>
                 <FormControl>
-                  <div className='flex'>
-                     <Avatar src={field.value} /><Input className='text-sm ml-1 flex-1' placeholder="头像地址" {...field} />
+                  <div className="flex">
+                    <Avatar className="AvatarRoot">
+                      <AvatarImage src={field.value || ''} alt={field.value || ''} />
+                      <AvatarFallback>{field.value?.slice(0, 1)}</AvatarFallback>
+                    </Avatar>
+                    <Input className="text-sm ml-1 flex-1" placeholder="头像地址" {...field} />
                   </div>
                 </FormControl>
                 <FormMessage />

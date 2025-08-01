@@ -5,9 +5,7 @@ import Content from './content'
 export default async function OneWork(props: { params: Promise<{ id: string }> }) {
   const params = await props.params
   const id = params.id
-
   const doc = await getDoc(id)
-
   if (doc == null)
     return (
       <div className="p-8 text-center text-muted-foreground">
