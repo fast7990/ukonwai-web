@@ -27,7 +27,7 @@ export default async function Layout({
   const user = await getUserInfo() // 获取用户信息
   return (
     <ResizablePanelGroup direction="horizontal" className="h-screen">
-      <ResizablePanel defaultSize={15} minSize={15} maxSize={50} className="min-w-[200px]">
+      <ResizablePanel defaultSize={15} minSize={15} maxSize={25} className="min-w-[200px]">
         <div className="flex flex-col h-screen bg-muted text-muted-foreground p-2">
           <div>
             <UserSettingButton user={user} />
