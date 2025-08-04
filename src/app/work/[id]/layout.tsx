@@ -15,12 +15,14 @@ import SearchFileButton from '@/components/search/search-file-button'
 type LayoutProps = {
   params: Promise<{ id: string }>
   children: React.ReactNode
-  directory: React.ReactNode
+  directory: React.ReactNode,
+  ai: React.ReactNode,
 }
 export default async function Layout({
   params,
   children,
   directory, // parallel route
+  ai,
 }: LayoutProps) {
   const { id = '0' } = await params
   const doc = await fetchDoc(id) // 直接获取文档数据
@@ -66,8 +68,16 @@ export default async function Layout({
           {/* nav bar */}
           <WorkNav workId={id} />
           {/* content */}
-          <div id="work-content-scroll-container" className="flex-auto overflow-y-auto">
-            {children}
+          <div className="flex-auto overflow-y-hidden">
+            <ResizablePanelGroup direction="horizontal">
+              <ResizablePanel defaultSize={75} minSize={50} maxSize={100}>
+                {children}
+              </ResizablePanel>
+              <ResizableHandle className="bg-muted" />
+              <ResizablePanel defaultSize={25} minSize={15} maxSize={25}>
+                {ai}
+              </ResizablePanel>
+            </ResizablePanelGroup>
           </div>
           <Footer doc={doc} />
         </div>

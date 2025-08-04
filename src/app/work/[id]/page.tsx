@@ -15,9 +15,11 @@ export default async function OneWork(props: { params: Promise<{ id: string }> }
 
   return (
     <>
-      <div id="work-content-container" className="max-w-[900px] mx-auto my-10">
-        <Title id={id} title={doc.title} />
-        <Content id={id} content={doc.content} />
+      <div id="work-content-scroll-container" className="flex-auto h-[100%] overflow-y-auto">
+        <div id="work-content-container" className="max-w-[900px] mx-auto my-10 mt-2 mb-2">
+          <Title id={id} title={doc.title} />
+          <Content id={id} content={doc.content} />
+        </div>
       </div>
     </>
   )
